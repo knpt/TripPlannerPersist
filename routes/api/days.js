@@ -13,10 +13,10 @@ router.get('/days', function(req, res, next){
 });
 
 router.post('/days', function(req, res, next){
-  // Day.create(req.body)
-  // .then(function(day) {
-    res.send({msg: 'You created a day!!'});
-  // });
+  Day.create({})
+  .then(function(data){
+    res.send(data);
+  })
 });
 
 

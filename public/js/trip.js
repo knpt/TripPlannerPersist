@@ -42,7 +42,12 @@ var tripModule = (function () {
     // before calling `addDay` or `deleteCurrentDay` that update the frontend (the UI), we need to make sure that it happened successfully on the server
   // ~~~~~~~~~~~~~~~~~~~~~~~
   $(function () {
-    $addButton.on('click', addDay);
+    $addButton.on('click', function(){
+      $.post('/api/days')
+      .then(function(data){
+        addDay(data)
+      })
+    });
     $removeButton.on('click', deleteCurrentDay);
   });
 

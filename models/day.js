@@ -6,7 +6,7 @@ var Restaurant = require('./restaurant');
 var Activity = require('./activity');
 
 var Day = db.define('day', {
-  name: Sequelize.INTEGER
+  // name: Sequelize.INTEGER
 }, {
   defaultScope: {
     include: [
