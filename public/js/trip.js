@@ -51,9 +51,14 @@ var tripModule = (function () {
   // ~~~~~~~~~~~~~~~~~~~~~~~
     // `addDay` may need to take information now that we can persist days -- we want to display what is being sent from the DB
   // ~~~~~~~~~~~~~~~~~~~~~~~
-  function addDay () {
+  function addDay (ajaxed) {
     if (this && this.blur) this.blur(); // removes focus box from buttons
-    var newDay = dayModule.create({ number: days.length + 1 }); // dayModule
+    var newDay = dayModule.create({
+      number: days.length + 1,
+      hotel : ajaxed.hotel || null,
+      restaurants : ajaxed.restaurants || [],
+      activities : ajaxed.activities || []
+    }); // dayModule
     days.push(newDay);
     if (days.length === 1) {
       currentDay = newDay;
@@ -92,7 +97,9 @@ var tripModule = (function () {
 
       $.get('/api/days')
       .then(function (data) {
-        data.forEach(addDay);
+        data.forEach(function(data) {
+          addDay(data)
+        });
         switchTo(days[0])
       })
       .catch( console.error.bind(console) );
