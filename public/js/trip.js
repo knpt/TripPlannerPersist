@@ -55,9 +55,9 @@ var tripModule = (function () {
     if (this && this.blur) this.blur(); // removes focus box from buttons
     var newDay = dayModule.create({
       number: days.length + 1,
-      hotel : ajaxed.hotel || null,
-      restaurants : ajaxed.restaurants || [],
-      activities : ajaxed.activities || []
+      hotel: ajaxed.hotel || null,
+      restaurants: ajaxed.restaurants || [],
+      activities: ajaxed.activities || []
     }); // dayModule
     days.push(newDay);
     if (days.length === 1) {
@@ -97,8 +97,8 @@ var tripModule = (function () {
 
       $.get('/api/days')
       .then(function (data) {
-        data.forEach(function(data) {
-          addDay(data)
+        data.forEach(function(dataElement) {
+          addDay(dataElement)
         });
         switchTo(days[0])
       })
