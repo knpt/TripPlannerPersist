@@ -3,7 +3,7 @@ var router = require('express').Router();
 var Hotel = require('../../models').Hotel;
 var Restaurant = require('../../models').Restaurant;
 var Activity = require('../../models').Activity;
-var Day = require('../../models/day.js');
+var Day = require('../../models').Day;
 
 router.get('/days', function(req, res, next){
   Day.findAll()
