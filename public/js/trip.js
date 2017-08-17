@@ -60,6 +60,7 @@ var tripModule = (function () {
     if (this && this.blur) this.blur(); // removes focus box from buttons
     var newDay = dayModule.create({
       number: days.length + 1,
+      dayId: ajaxed.id || null,
       hotel: ajaxed.hotel || null,
       restaurants: ajaxed.restaurants || [],
       activities: ajaxed.activities || []
